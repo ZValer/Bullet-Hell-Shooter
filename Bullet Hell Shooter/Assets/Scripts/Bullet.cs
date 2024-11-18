@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
     // Velocidad de movimiento de la bala
     public Vector3 Velocity;
 
+    // Evento para notificar cuando la bala se desactiva
+    public delegate void BulletEvent();
+    public event BulletEvent OnDeactivate;
+
     void Update()
     {
         // Mover la bala en la dirección de su velocidad, ajustada por el tiempo entre frames
@@ -21,7 +25,9 @@ public class Bullet : MonoBehaviour
 
         // Desactivar la bala si supera su vida útil máxima
         if (_lifeTime > MAX_LIFE_TIME)
+        {
             Disable();
+        }
     }
 
     void Disable()
@@ -31,5 +37,8 @@ public class Bullet : MonoBehaviour
 
         // Desactivar el objeto para reciclarlo en el pool
         gameObject.SetActive(false);
+
+        // Notificar al pool que la bala ha sido desactivada
+        OnDeactivate?.Invoke();
     }
 }
