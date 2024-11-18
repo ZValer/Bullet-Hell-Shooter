@@ -4,13 +4,23 @@ public class ShootTest : MonoBehaviour
 {
     [SerializeField] private float _shootCooldown; // Tiempo mínimo entre disparos
     [SerializeField] private RadialShotSettings _shotSettings; // Configuración para disparos radiales
+    [SerializeField] private float _shootDuration = 10f; // Duración total en la que los disparos están activos
 
-    // Temporizador para rastrear cuándo se puede disparar nuevamente
-    private float _shootCooldownTimer = 0f;
+    private float _shootCooldownTimer = 0f; // Temporizador para rastrear cuándo se puede disparar nuevamente
+    private float _totalTime = 0f; // Temporizador para rastrear el tiempo total de disparos
 
     void Update()
     {
-        // Incrementar el temporizador según el tiempo transcurrido desde el último frame
+        // Incrementar el temporizador total
+        _totalTime += Time.deltaTime;
+
+        // Detener los disparos si la duración máxima ha sido alcanzada
+        if (_totalTime >= _shootDuration)
+        {
+            return; // Salir de Update si se cumplió la duración
+        }
+
+        // Incrementar el temporizador del cooldown
         _shootCooldownTimer += Time.deltaTime;
 
         // Verificar si el tiempo de cooldown ha pasado

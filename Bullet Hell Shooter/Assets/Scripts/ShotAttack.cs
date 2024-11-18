@@ -34,4 +34,5 @@ public static class ShotAttack
             SimpleShot(origin, bulletDirection * settings.BulletSpeed);
         }
     }
+
 }
