@@ -61,7 +61,6 @@ public class BulletPool : MonoBehaviour
             {
                 // Activar la bala y devolverla
                 bullet.gameObject.SetActive(true);
-                Debug.Log($"Bullet activated at position {bullet.transform.position}");
                 return bullet;
             }
         }

@@ -14,7 +14,7 @@ public class ShootTest : MonoBehaviour
         _shootCooldownTimer += Time.deltaTime;
 
         // Verificar si el tiempo de cooldown ha pasado
-        if (_shootCooldownTimer >= _shootCooldown)
+        if (_shootCooldownTimer >= _shotSettings.CooldownAfterShot)
         {
             // Disparar un ataque radial en la posición actual
             ShotAttack.RadialShot(transform.position, transform.up, _shotSettings);
