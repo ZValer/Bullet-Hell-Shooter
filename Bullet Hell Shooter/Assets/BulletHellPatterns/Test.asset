@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   Repetitions: 5
+  AngleOffsetBetweenReps: -124
   StartWait: 0
   EndWait: 0
   PatternSettings:
-  - NumberOfBullets: 2
-    BulletSpeed: 15
+  - NumberOfBullets: 4
+    BulletSpeed: 10
     CooldownAfterShot: 0.2
-  - NumberOfBullets: 10
-    BulletSpeed: 5
+    PhaseOffset: 0
+    AngleOffset: 0
+  - NumberOfBullets: 4
+    BulletSpeed: 8
     CooldownAfterShot: 1
+    PhaseOffset: -0.02
+    AngleOffset: 0

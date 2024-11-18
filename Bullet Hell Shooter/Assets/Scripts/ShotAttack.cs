@@ -14,6 +14,10 @@ public static class ShotAttack
     {
         float angleBetweenBullets = 360f / settings.NumberOfBullets;
 
+        if (settings.AngleOffset != 0f || settings.PhaseOffset != 0f)
+            aimDirection = aimDirection
+                .Rotate(settings.AngleOffset + (settings.PhaseOffset * angleBetweenBullets));
+
         for (int i = 0; i <settings.NumberOfBullets; i++)
         {
             float bulletDirectionAngle = angleBetweenBullets * i;
