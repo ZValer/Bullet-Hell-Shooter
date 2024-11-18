@@ -3,7 +3,8 @@ using UnityEngine;
 public class ShootTest : MonoBehaviour
 {
     [SerializeField] private float _shootCooldown; // Tiempo mínimo entre disparos
-    [SerializeField] private RadialShotSettings _shotSettings; // Configuración para disparos radiales
+    [SerializeField] private CircleShotSettings _shotSettings; // Configuración para disparos radiales
+    //[SerializeField] private AsteriskShotSettings _shotSettings; // Configuración para disparos radiales
     [SerializeField] private float _shootDuration = 10f; // Duración total en la que los disparos están activos
 
     private float _shootCooldownTimer = 0f; // Temporizador para rastrear cuándo se puede disparar nuevamente
@@ -27,7 +28,7 @@ public class ShootTest : MonoBehaviour
         if (_shootCooldownTimer >= _shotSettings.CooldownAfterShot)
         {
             // Disparar un ataque radial en la posición actual
-            ShotAttack.RadialShot(transform.position, transform.up, _shotSettings);
+            ShotAttack.CircleShot(transform.position, transform.up, _shotSettings);
 
             // Reiniciar el temporizador de cooldown
             _shootCooldownTimer = 0f;

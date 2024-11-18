@@ -1,8 +1,7 @@
 using UnityEngine;
-
 [System.Serializable]
 
-public class RadialShotSettings
+public class CircleShotSettings
 {
     public int NumberOfBullets = 20;
     public float BulletSpeed = 10f;

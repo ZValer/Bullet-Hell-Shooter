@@ -16,7 +16,7 @@ public static class ShotAttack
     }
 
     // Método para disparar múltiples balas en un patrón radial
-    public static void RadialShot(Vector2 origin, Vector2 aimDirection, RadialShotSettings settings)
+    public static void CircleShot(Vector2 origin, Vector2 aimDirection, CircleShotSettings settings)
     {
         // Calcular el ángulo entre cada bala con la fórmula
         float angleBetweenBullets = 360f / settings.NumberOfBullets;
@@ -35,4 +35,18 @@ public static class ShotAttack
         }
     }
 
+    // Método para disparar en forma de asterisco
+    public static void AsteriskShot(Vector2 origin, Vector2 aimDirection, AsteriskShotSettings settings)
+    {
+        // Calcular el ángulo entre cada bala con la fórmula
+        float angleBetweenBullets = 360f / settings.NumberOfBullets;
+
+        // Loop para crear las balas de nuestro disparo
+        for (int i = 0; i < settings.NumberOfBullets; i++)
+        {
+            float bulletDirectionAngle = angleBetweenBullets * i;
+            Vector2 bulletDirection = aimDirection.Rotate(bulletDirectionAngle);
+            SimpleShot(origin, bulletDirection * settings.BulletSpeed);
+        }
+    }
 }
