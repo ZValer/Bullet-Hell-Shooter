@@ -49,4 +49,57 @@ public static class ShotAttack
             SimpleShot(origin, bulletDirection * settings.BulletSpeed);
         }
     }
+
+    // Método para disparar en forma de flor
+    public static void FlowerShot(Vector2 origin, Vector2 aimDirection, FlowerShotSettings settings)
+    {
+        // Calcular el ángulo entre los "pétalos"
+        float angleBetweenPetals = 360f / settings.NumberOfPetals;
+
+        for (int petal = 0; petal < settings.NumberOfPetals; petal++)
+        {
+            // Calcular la dirección base para el pétalo actual
+            float petalBaseAngle = angleBetweenPetals * petal;
+            Vector2 petalBaseDirection = aimDirection.Rotate(petalBaseAngle);
+
+            // Disparar múltiples balas por pétalo
+            for (int bullet = 0; bullet < settings.BulletsPerPetal; bullet++)
+            {
+                // Ajustar ligeramente el ángulo dentro del pétalo
+                float offsetAngle = settings.AngleSpread * (bullet - (settings.BulletsPerPetal - 1) / 2f);
+                Vector2 bulletDirection = petalBaseDirection.Rotate(offsetAngle);
+
+                // Disparar la bala
+                SimpleShot(origin, bulletDirection * settings.BulletSpeed);
+            }
+        }
+    }
+
+    // Método para disparar en forma de estrella con picos de velocidad
+    public static void StarShot(Vector2 origin, Vector2 aimDirection, StarShotSettings settings)
+    {
+        // Calcular el ángulo entre cada bala
+        float angleBetweenBullets = 360f / settings.NumberOfBullets;
+
+        // Loop para crear las balas de nuestro disparo
+        for (int i = 0; i < settings.NumberOfBullets; i++)
+        {
+            // Calcular el ángulo de dirección de cada bala
+            float bulletDirectionAngle = angleBetweenBullets * i;
+
+            // Rotar la dirección inicial según el ángulo calculado
+            Vector2 bulletDirection = aimDirection.Rotate(bulletDirectionAngle);
+
+            // Evaluar si el ángulo corresponde a un pico de la estrella
+            float normalizedAngle = (bulletDirectionAngle % 360f) / 360f; // Normalizado entre 0 y 1
+            float starFactor = Mathf.Abs(5 * Mathf.Sin(normalizedAngle * Mathf.PI * settings.StarPoints)); // Función de estrella
+
+            // Ajustar la velocidad según el factor de estrella
+            float bulletSpeed = settings.BaseBulletSpeed + (starFactor * settings.SpeedMultiplier);
+
+            // Disparar la bala con la velocidad ajustada
+            SimpleShot(origin, bulletDirection.normalized * bulletSpeed);
+        }
+    }
+
 }

@@ -384,11 +384,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootCooldown: 0
-  _shotSettings:
+  _circleShotSettings:
     NumberOfBullets: 20
     BulletSpeed: 10
     CooldownAfterShot: 2
-  _shootDuration: 10
+  _asteriskShotSettings:
+    NumberOfBullets: 6
+    BulletSpeed: 5
+    CooldownAfterShot: 0.3
+  _starShotSettings:
+    NumberOfBullets: 50
+    BaseBulletSpeed: 10
+    SpeedMultiplier: 1.5
+    CooldownAfterShot: 0.7
+    StarPoints: 5
+  _flowerShotSettings:
+    NumberOfPetals: 6
+    BulletsPerPetal: 3
+    AngleSpread: 15
+    BulletSpeed: 7
+    CooldownAfterShot: 0.5
+  _switchDuration: 10
 --- !u!4 &1985262230
 Transform:
   m_ObjectHideFlags: 0
