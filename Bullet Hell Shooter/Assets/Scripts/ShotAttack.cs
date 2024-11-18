@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class ShotAtack
+public static class ShotAttack
 {
     public static void SimpleShot(Vector3 origin, Vector3 velocity)
     {

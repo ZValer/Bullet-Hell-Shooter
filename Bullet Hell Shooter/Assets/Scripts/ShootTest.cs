@@ -13,7 +13,7 @@ public class ShootTest : MonoBehaviour
         // Verificar si el cooldown ha terminado
         if (_shootCooldownTimer >= _shootCooldown)
         {
-            ShotAtack.RadialShot(transform.position, transform.up, _shotSettings);
+            ShotAttack.RadialShot(transform.position, transform.up, _shotSettings);
             _shootCooldownTimer = 0f;
         }
     }
